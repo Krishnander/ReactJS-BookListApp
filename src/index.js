@@ -1,48 +1,26 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import './index.css';
+import {books} from './Books'
 
 function BookList(){
   return(
-  <section>
-    <Book/>
-    <Book/>
-    <Book/>
-    <Book/>
-    <Book/>
-    <Book/>
-    <Book/>
-    <Book/>
-    <Book/>
-    <Book/>
+  <section className='bookList'>
+    {books.map((book,index)=>{
+      return <Book key={index} {...book}></Book>
+    })}
   </section>
   );
 }
 
-const Book = ()=>{
+const Book = (props)=>{
+  const {image,title,author} = props;
   return (
-    <article>
-      <Image/>
-      <Author/>
-      <Title/>
+    <article className='book'>
+      <h1><img src={image} alt=''/></h1>
+      <h3>{title}</h3>
+      <h6>{author}</h6>
     </article>
-  );
-}
-
-const Image = ()=>{
-  return (
-    <img src="https://images-na.ssl-images-amazon.com/images/I/6182z76Pg1L._SY291_BO1,204,203,200_QL40_FMwebp_.jpg" alt=""/>
-  );
-}
-
-const Author = () =>{
-  return (
-    <h4>Becky Lowax</h4>
-  );
-}
-
-const Title = ()=>{
-  return (
-    <h1>Best Parks in USA to visit</h1>
   );
 }
 
